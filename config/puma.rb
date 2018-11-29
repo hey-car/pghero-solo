@@ -12,7 +12,7 @@ end
 environment ENV['RACK_ENV'] || 'production'
 
 unless ENV['DATABASE_URL']
-  if File.exist?('config/pghero.yml')
+  if File.exist?( ENV['PGHERO_CONFIG_PATH'] || 'config/pghero.yml')
     ENV['DATABASE_URL'] = 'nulldb:///'
   else
     abort "No DATABASE_URL or config/pghero.yml"
